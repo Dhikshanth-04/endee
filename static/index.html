@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title>AI Supervisor</title>
+  </head>
+  <body style="font-family: Arial; text-align: center; margin-top: 50px">
+    <h1>🧠 Digital Supervisor Dashboard</h1>
+
+    <button onclick="run('best')">Best Performer</button>
+    <button onclick="run('worst')">Underperformer</button>
+    <button onclick="run('team')">Project Team</button>
+    <button onclick="run('growth')">Company Growth</button>
+    <button onclick="run('strategy')">Future Strategy</button>
+
+    <h2 id="output"></h2>
+
+    <script>
+      async function run(action) {
+        const res = await fetch(`/action?action=${action}`);
+        const data = await res.json();
+        document.getElementById("output").innerText = data.result;
+      }
+    </script>
+  </body>
+</html>
